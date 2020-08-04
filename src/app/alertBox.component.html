@@ -1,0 +1,41 @@
+<div *ngIf="fundAlerted" class="boxEle">
+    <div class="boxInner">
+    <div class="card horizontal hoverable">
+      <div class="fundAlertNumber">
+        <strong> {{ fundAlerted.fund_name }}</strong>
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+          <table class="bordered striped">
+            <tbody>
+              <tr>
+                <td>Subfund</td>
+                <td class="aleValue" >{{ fundAlerted.subfund_name }}</td>
+              </tr>
+              <tr>
+                <td>Share Class</td>
+                <td class="aleValue">{{ fundAlerted.share_class_name }}</td>
+              </tr>
+              <tr>
+                <td>Report Status</td>
+                <td class="aleValue">{{ fundAlerted.report_status }}</td>
+              </tr>
+              <tr>
+                <td>Alerts</td>
+                <td class="aleValue"><strong style="color: darkred;">{{ fundAlerted.nb_alerts }}</strong></td>
+              </tr>
+              <tr>
+                <td>Date</td>
+                <td class="aleValue"><em>{{ fundAlerted.date | ngtDate }}</em></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+    <h4 *ngIf='!fundAlerted' class="center">
+      No fund with alerts
+    </h4>
+    

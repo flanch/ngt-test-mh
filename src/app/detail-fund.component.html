@@ -1,0 +1,27 @@
+<div class="container">
+    <div class='row fundContent'>
+        <h2>Fund detail on {{ fund.date | ngtDate }}</h2>
+    </div>
+    <div class="row">
+        <div class="pager">
+            <div class="pagerButton" (click)="goPreviousDay()"><< Previous</div>
+            <div class="pagerButton" (click)="goNextDay()">Next >></div>
+        </div>
+    </div>
+    <div class="row ">
+        <div class="col-12">
+        <strong>Fund Name : {{ fund.fund_name }}</strong>
+    </div>
+    </div>
+    <div class="row">
+        <div class="col-9">
+            <p>Subfund : {{ fund.subfund_name }}</p>
+            <p>Share Class Name : {{ fund.share_class_name }}</p>
+            <div><span>Date : {{ fund.date | ngtDate }}</span></div>
+        </div>
+        <div class="col-3">
+            <p>Report Status : {{ fund.report_status }}</p>
+            <p>Alerts : {{ fund.nb_alerts }}</p>
+        </div>
+    </div>
+</div>

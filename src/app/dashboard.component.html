@@ -1,0 +1,65 @@
+<div class="container">
+    <div class="spacer"></div>
+    
+    <div *ngIf="trendingFunds" class="row">
+      <div class="infoCard tdAl col-sm-12 col-md-8">
+        <h2 class="tdAlTitle">Trending Funds</h2>
+        <div class="listHeader row">
+          <div class="col-sm">Fund Name</div>
+          <div class="col-sm">Subfund Name</div>
+          <div class="col-sm">Date</div>
+
+        </div>
+        <div *ngFor="let fund of trendingFunds">
+          <div (click)="selectFund(fund)" class="row">
+            <div class="col-sm">{{fund.fund_name}}</div>
+            <div class="col-sm">{{fund.subfund_name}}</div>
+            <div class="col-sm">{{fund.date | ngtDate }}</div>
+          </div>
+        </div>
+      </div>
+  
+      <div  class="infoCard hgAl col-sm-12 col-md-3 offset-md-1" >
+        <h2 class="hgAlTitle">High Alert Funds</h2>
+        <div *ngFor="let fund of fundsAlerted"><alert-box [fundAlerted]="fund" (click)="selectFund(fund)"></alert-box></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="infoCard allF col-12">
+      <h2 class="allFundTitle">List of Funds {{ fundsDated ? 'of the ' + (fundsDated[0].date | ngtDate) : '' }}</h2>
+      <div class="dropdown">
+          <button class="btn allF btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Date
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li *ngFor="let date of dateArray">
+              <div (click)="getFundsByDate(date)" class="dateDropdownEle">{{ date | ngtDate }}</div>
+            </li>
+            
+          </ul>
+      </div>
+      <div class="listHeader row">
+          <div class="col-sm">Fund Name</div>
+          <div class="col-sm">Subfund Name</div>
+          <div class="col-sm">Subfund Class name</div>
+          <div class="col-sm">Report Status</div>
+          <div class="col-sm">Alerts</div>
+          <div class="col-sm">Date</div>
+      </div>
+      <div *ngFor="let fund of fundsDated">
+          <div class="row fundLine" (click)="selectFund(fund)">
+              <div class="col-sm">{{fund.fund_name}}</div>
+              <div class="col-sm">{{fund.subfund_name}}</div>
+              <div class="col-sm">{{fund.share_class_name}}</div>
+              <div class="col-sm">{{fund.report_status}}</div>
+              <div class="col-sm">{{fund.nb_alerts}}</div>
+              <div class="col-sm">{{fund.date | ngtDate }}</div>
+          </div>
+      </div>
+      </div>
+  </div>
+</div>
+
+  
+  
